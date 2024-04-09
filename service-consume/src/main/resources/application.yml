@@ -17,11 +17,19 @@ spring:
         file-extension: yaml
         name: ${spring.application.name}
 #        shared-configs:
+    # sentinel  熔断  降级  限流
+    sentinel:
+      transport:
+        dashboard: localhost:7001
+        port: 7001
     loadbalancer:
       lb:
         rule:
           #  round_robin  轮询策略  random 随机策略
           type: random
+
+
+
 
 
   datasource:
