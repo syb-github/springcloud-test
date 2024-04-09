@@ -1,0 +1,49 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: service-consume
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        group: dev
+#        namespace: 02c39f35-d81a-48f6-b3ce-6fef4bd53b7d
+        name: ${spring.application.name}
+      config:
+        server-addr: 127.0.0.1:8848
+        group: dev
+#        namespace: 02c39f35-d81a-48f6-b3ce-6fef4bd53b7d
+        file-extension: yaml
+        name: ${spring.application.name}
+#        shared-configs:
+    loadbalancer:
+      lb:
+        rule:
+          #  round_robin  轮询策略  random 随机策略
+          type: random
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: syb951007
+    driver-class-name: com.mysql.cj.jdbc.Driver
+logging:
+  level:
+    org.bing.serviceconsume: debug
+feign:
+  client:
+    config:
+      service-provider:
+        # 日志级别配置
+        loggerLevel: full
+        # 连接超时时间
+        connectTimeout: 5000
+        # 请求处理超时时间
+        readTimeout: 300
+
+#service-provide:
+#  ribbon:
+
+#    NF

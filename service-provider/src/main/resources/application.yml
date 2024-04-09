@@ -1,0 +1,24 @@
+
+spring:
+  application:
+    name: service-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        group: dev
+#        namespace: 02c39f35-d81a-48f6-b3ce-6fef4bd53b7d
+        name: ${spring.application.name}
+      config:
+        server-addr: 127.0.0.1:8848
+        group: dev
+#        namespace: 02c39f35-d81a-48f6-b3ce-6fef4bd53b7d
+        file-extension: yaml
+        name: ${spring.application.name}
+
+
+#service-provide:
+#  ribbon:
+server:
+  port: 8082
+#    NF
