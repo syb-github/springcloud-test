@@ -17,7 +17,7 @@ spring:
         file-extension: yaml
         name: ${spring.application.name}
 #        shared-configs:
-    # sentinel  熔断  降级  限流
+    # sentinel  熔断  降级  限流1
     sentinel:
       transport:
         dashboard: localhost:7001

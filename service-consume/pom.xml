@@ -58,7 +58,7 @@
             <version>1.8.6</version>
         </dependency>
 
-        <!--客户端接入sentinel控制台-->
+        <!--客户端接入sentinel控制台1-->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-transport-simple-http</artifactId>
