@@ -51,7 +51,7 @@ feign:
         # 请求处理超时时间
         readTimeout: 300
 
-#service-provide:
-#  ribbon:
-
-#    NF
+# ribbon负载均衡策略
+service-provider:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

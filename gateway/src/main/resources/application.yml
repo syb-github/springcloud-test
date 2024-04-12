@@ -1,0 +1,32 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: service-gateway
+  #配置nacos注册中心地址
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        group: dev
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      #路由配置
+      routes:
+          # id 唯一
+        - id: service-consume-route
+          # lb:负载均衡
+          uri: lb://service-consume
+          # 优先级 值越小优先级越高
+          order: 1
+          # 断言
+          predicates:
+            - Path=/consume-gateway/**
+            - Method=GET
+          # 跳过网关路由的索引     lb://service-consume/**
+          filters:
+            - StripPrefix=1
+
+
