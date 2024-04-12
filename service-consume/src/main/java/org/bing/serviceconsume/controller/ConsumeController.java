@@ -1,8 +1,10 @@
 package org.bing.serviceconsume.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.bing.serviceconsume.service.ConsumeService;
 import org.bing.serviceconsume.service.RemoteConsume;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +20,6 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping(path = "/consume")
 public class ConsumeController {
-
     @Resource
     private RestTemplate restTemplate;
     @Resource
@@ -26,7 +27,8 @@ public class ConsumeController {
     @Autowired
     private RemoteConsume remoteConsume;
     @GetMapping(path = "/welcome")
-    public String run(){
+    @SentinelResource(value = "consume-welcome")
+    public String run(String name){
         consumeService.run();
         return remoteConsume.remoteConsume();
 //        return restTemplate.getForObject("http://service-provider/provider/welcome", String.class);
